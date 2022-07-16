@@ -1,2 +1,2 @@
 # notjinwuk.github.io
-joe mam
+joe mama cute
