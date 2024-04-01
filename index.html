@@ -1,11 +1,182 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>My first web page</title>
-     </head>
-    <body>
-        <h1>notjinwuk</h1>
-        <h2>Welcome to Joe Mama's world.</h2>
-        <p>THE MOMS ARE EVERYWHERE</p>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WillCo Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0ebe3; /* Light pastel brown background */
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+        .title {
+            text-align: center;
+            color: #5d483d; /* Darker pastel brown for text */
+            margin: 0 0 40px 0; /* More space below the title */
+        }
+        .category {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item h2 {
+            margin: 0 0 5px 0;
+            color: #5d483d; /* Darker pastel brown for headings */
+        }
+        button {
+            padding: 5px 10px;
+            border: none;
+            background-color: #a39079; /* Pastel brown for buttons */
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%;
+            border-radius: 8px;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .small-text {
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="title">WillCo Menu</h1>
+
+<div class="category">
+    <h1>SIGNATURE COFFEE</h1>
+    <div class="menu-item">
+        <h2>Cappuccino</h2>
+        <button onclick="showDescription('Cappuccino', 'A perfect balance of espresso, steamed milk and foam', '$1.85', 'Double Espresso, Steamed Milk, Foamed Milk')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Iced Latte</h2>
+        <button onclick="showDescription('Iced Latte', 'A classic coffee drink with espresso and chilled milk, served over ice', '$1.80', 'Double Espresso, Milk')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Black</h2>
+        <button onclick="showDescription('Black', 'It\'s unique, it\'s smooth, it\'s nothing like the ashy coffee of old', '$1.50', '100% Coffee')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Americano</h2>
+        <button onclick="showDescription('Americano', 'Starts with espresso and adopts the flavors and aromas of the espresso, but with a less powerful taste', '$1.60', 'Double Espresso, Purified Water')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Affogato</h2>
+        <button onclick="showDescription('Affogato', 'A perfect shot of espresso over vanilla ice cream', '$2.50', 'Vanilla Ice Cream, Espresso')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Mocha</h2>
+        <button onclick="showDescription('Mocha', 'A drink for the chocolate lovers, garnished with chocolate at the end', '$2.50', 'Espresso, Steamed Milk, Foamed Milk, Swiss Chocolate')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Caramel Macchiato/Cappuccino</h2>
+        <button onclick="showDescription('Caramel Macchiato/Cappuccino', 'The Caramel Macchiato/Cappuccino is essentially a vanilla latte topped with caramel', '$2.50', 'Espresso, Steamed Milk, Foamed Milk, Vanilla Syrup, Caramel Drizzle')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Caramel Frappuccino</h2>
+        <button onclick="showDescription('Caramel Frappuccino', 'Vanilla syrup meets coffee, milk and ice for a rendezvous in the blender, while buttery caramel sauce layer the love on top', '$2.50', 'Double Espresso, Milk, Ice, Vanilla Syrup, Caramel')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Vanilla Sweet Cream Cold Foam</h2>
+        <button onclick="showDescription('Vanilla Sweet Cream Cold Foam', 'A drink that is beautifully combined, frothed milk with multiple ingredients, poured over a double espresso', '$2.25', 'Double Espresso, Foamed Milk, Honey, Vanilla Syrup')">Show Description</button>
+    </div>
+</div>
+
+<div class="category">
+    <h1>THE REFRESHERS</h1>
+    <div class="menu-item">
+        <h2>Lemon Refresher</h2>
+        <button onclick="showDescription('Lemon Refresher', 'Extracted from a fresh new lemon, combined with sweetness', '$1.50', 'Lemon, Water, Vanilla Syrup')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Strawberry Refresher</h2>
+        <button onclick="showDescription('Strawberry Refresher', 'Made from organic strawberries, combined with honey', '$1.75', 'Strawberry Syrup, Water, Vanilla Syrup, Honey')">Show Description</button>
+    </div>
+    <div class="menu-item">
+        <h2>Strawberry Lemon Refresher</h2>
+        <button onclick="showDescription('Strawberry Lemon Refresher', 'Lemon and Strawberry combined, creating a refreshing drink', '$2.25', 'Lemon, Water, Vanilla Syrup, Strawberry Syrup, Honey')">Show Description</button>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="descriptionModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <p id="modalPrice" class="small-text"></p>
+        <p id="modalIngredients" class="small-text"></p>
+    </div>
+</div>
+
+<script>
+    function showDescription(title, descriptionText, price, ingredients) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalDescription').innerText = descriptionText;
+        document.getElementById('modalPrice').innerText = 'Price: ' + price;
+        document.getElementById('modalIngredients').innerText = 'Ingredients: ' + ingredients;
+        document.getElementById('descriptionModal').style.display = "block";
+    }
+
+    // Get the modal
+    var modal = document.getElementById('descriptionModal');
+
+    // Get the <span> element that closes the modal
+    var closeButton = document.getElementsByClassName("close-button")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    closeButton.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
 </html>
